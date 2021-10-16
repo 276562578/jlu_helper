@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
     // than having to individually change instances of widgets.
     return Scaffold(
 
-        body: Responsive(
+        body: SafeArea(child:Responsive(
           mobile: Row(children: [
 
             Expanded(
@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
               flex: _size.width > 1340 ? 8:10,
             ),
           ]),
-        )
+        ))
 
         // floatingActionButton: FloatingActionButton(
         //   onPressed: null,
