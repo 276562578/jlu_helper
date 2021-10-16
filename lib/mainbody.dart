@@ -1,22 +1,28 @@
+import 'dart:ui';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class MainBody extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     Widget _mainCard(String txt) {
-      return Card(
-        child: ListTile(
-          title: Center(
-              child: Text(
-                txt,
-                textAlign: TextAlign.center,
-                textScaleFactor: 2,
-              )),
-          onTap: () => print("tap"),
-        ),
-        margin: EdgeInsets.all(15),
-        color: Colors.white38,
-      );
+      return LayoutBuilder(
+        builder:(BuildContext context,BoxConstraints constraints){
+          return Card(
+            child: ListTile(
+              title: Center(
+                  child: AutoSizeText(
+                    txt,
+                    textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 1/8*constraints.maxWidth),
+                  )),
+              onTap: () => print("tap"),
+            ),
+            margin: EdgeInsets.all(1/10*constraints.maxWidth),
+            color: Colors.white38,
+          );
+        }
+          );
     }
     // TODO: implement build
     return Center(
