@@ -4,11 +4,15 @@ import 'package:jlu_helper/modules/communication.dart';
 import 'package:jlu_helper/modules/gim.dart';
 import 'package:jlu_helper/modules/oa_new.dart';
 import 'package:jlu_helper/modules/uims.dart';
+import 'package:jlu_helper/responsive.dart';
+import 'package:jlu_helper/sidemenu.dart';
 
 class MainBody extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _mainBodyKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-    Widget _mainCard(String txt,router) {
+    Widget _mainCard(String txt, router) {
       return LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
         return Card(
@@ -20,7 +24,10 @@ class MainBody extends StatelessWidget {
               style: TextStyle(fontSize: 1 / 10 * constraints.maxWidth),
             )),
             onTap: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => router),)
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => router),
+              )
             },
           ),
           margin: EdgeInsets.all(1 / 8 * constraints.maxWidth),
@@ -30,18 +37,38 @@ class MainBody extends StatelessWidget {
     }
 
     // TODO: implement build
-    return Center(
-      // Center is a layout widget. It takes a single child and positions it
-      // in the middle of the parent.
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 0,
-        mainAxisSpacing: 0,
+    return Scaffold(
+      key: _mainBodyKey,
+      drawer: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 250),
+        child: SideMenu(),
+      ),
+      body: Column(
         children: [
-          _mainCard("校内\n通知",OANews()),
-          _mainCard("沟通\n交流",Communication()),
-          _mainCard("教务系统\nUIMS",Uims()),
-          _mainCard("研究生系统\nGIM",Gim()),
+          Row(
+            children: [
+              if (!Responsive.isDesktop(context))
+                IconButton(
+                  icon: Icon(Icons.menu),
+                  onPressed: () {
+                    _mainBodyKey.currentState!.openDrawer();
+                  },
+                ),
+            ],
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 0,
+              children: [
+                _mainCard("校内\n通知", OANews()),
+                _mainCard("沟通\n交流", Communication()),
+                _mainCard("教务系统\nUIMS", Uims()),
+                _mainCard("研究生系统\nGIM", Gim()),
+              ],
+            ),
+          ),
         ],
       ),
     );
