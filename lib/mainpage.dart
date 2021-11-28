@@ -14,9 +14,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final GlobalKey<SubPageState> sub_page = GlobalKey<SubPageState>();
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
+
+
 
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -30,18 +33,18 @@ class _MainPageState extends State<MainPage> {
           mobile: Row(children: [
 
             Expanded(
-              child: MainBody(),
+              child: MainBody(sub_page_key: sub_page,),
               flex: _size.width > 1340 ? 3:5,
             ),
 
           ]),
           tablet: Row(children: [
            Expanded(
-              child: MainBody(),
+              child: MainBody(sub_page_key: sub_page,),
               flex: 6,
             ),
             Expanded(
-              child: SubPage(),
+              child: SubPage(key:sub_page,body: Container(),),
               flex: 9,
             ),
           ]),
@@ -51,11 +54,11 @@ class _MainPageState extends State<MainPage> {
               flex: _size.width > 1340 ? 2:4,
             ),
             Expanded(
-              child: MainBody(),
+              child: MainBody(sub_page_key: sub_page,),
               flex: _size.width > 1340 ? 3:5,
             ),
             Expanded(
-              child: SubPage(),
+              child: SubPage(key:sub_page,body: Container(),),
               flex: _size.width > 1340 ? 8:10,
             ),
           ]),

@@ -6,9 +6,13 @@ import 'package:jlu_helper/modules/oa_new.dart';
 import 'package:jlu_helper/modules/uims.dart';
 import 'package:jlu_helper/responsive.dart';
 import 'package:jlu_helper/sidemenu.dart';
+import 'package:jlu_helper/subpage.dart';
 
 class MainBody extends StatelessWidget {
   final GlobalKey<ScaffoldState> _mainBodyKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<SubPageState> sub_page_key;
+  MainBody({Key? key, required this.sub_page_key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +28,14 @@ class MainBody extends StatelessWidget {
               style: TextStyle(fontSize: 1 / 10 * constraints.maxWidth),
             )),
             onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => router),
-              )
+              if(Responsive.isMobile(context)){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => router),
+                )
+              }else{
+                sub_page_key.currentState!.changeBody(router)
+              }
             },
           ),
           margin: EdgeInsets.all(1 / 8 * constraints.maxWidth),
