@@ -40,6 +40,13 @@
   - [ ] 课表获取
   - [ ] 文件互传
   - [ ] 文件分享
+- [ ] 多系统支持
+  - [x] Android
+  - [ ] IOS
+  - [x] Windows
+  - [ ] Linux
+  - [ ] MacOS
+  - [x] Web
 
 ## 当前进度
 
