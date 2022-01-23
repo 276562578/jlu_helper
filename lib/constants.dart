@@ -1,0 +1,1 @@
+String oa_news_url = "https://oa.jlu.edu.cn/defaultroot/PortalInformation!jldxList.action?channelId=179577";

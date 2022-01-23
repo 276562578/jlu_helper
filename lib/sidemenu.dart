@@ -1,18 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatelessWidget {
   bool isLogin = false;
   bool isPublic = false;
   String name = "";
-  String nullName="未登录";
+  String nullName = "未登录";
   String isPublicFalse = "当前不可被发现";
   String isPublicTrue = "当前可作为主机";
 
-
-  Widget headContainer() {
-
+  Widget headContainer(BuildContext context) {
     Widget head = Container();
     if (isLogin) {
       head = Column(
@@ -26,8 +22,15 @@ class SideMenu extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(isPublicTrue,textScaleFactor: 0.7,),
-              Icon(Icons.circle,color: Colors.red,size: 8,),
+              Text(
+                isPublicTrue,
+                textScaleFactor: 0.7,
+              ),
+              Icon(
+                Icons.circle,
+                color: Colors.red,
+                size: 8,
+              ),
             ],
           ),
         ],
@@ -39,14 +42,36 @@ class SideMenu extends StatelessWidget {
             child: Row(
               children: [
                 Icon(Icons.account_circle_outlined),
-                Expanded(child: Text(nullName)),
+                Expanded(
+                    child: Text(
+                  nullName,
+                  style: const TextStyle(
+                    decoration: TextDecoration.underline,
+                  ),
+                )),
               ],
             ),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Dialog(
+                      child: Text("登录界面"),
+                    );
+                  });
+            },
           ),
           Row(
             children: [
-              Text(isPublicFalse,textScaleFactor: 0.7,),
-              Icon(Icons.circle,color: Colors.red,size: 8,),
+              Text(
+                isPublicFalse,
+                textScaleFactor: 0.7,
+              ),
+              Icon(
+                Icons.circle,
+                color: Colors.red,
+                size: 8,
+              ),
             ],
           )
         ],
@@ -65,7 +90,10 @@ class SideMenu extends StatelessWidget {
     return Container(
         color: Colors.white,
         child: Column(
-          children: [headContainer(), Container()],
+          children: [
+            headContainer(context),
+            Container(),
+          ],
         ));
   }
 }
