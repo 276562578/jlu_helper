@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jlu_helper">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="jlu_helper"
         android:icon="@mipmap/ic_launcher">
