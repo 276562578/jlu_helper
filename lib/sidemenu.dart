@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 class SideMenu extends StatelessWidget {
   bool isLogin = false;
   bool isPublic = false;
+  bool isWebVPN = false;
   String name = "";
   String nullName = "未登录";
   String isPublicFalse = "当前不可被发现";
   String isPublicTrue = "当前可作为主机";
+  String isWebVPNTrue="（WebVPN已上线）";
+  String isWebVPNFalse="（WebVPN未上线，请登录）";
 
   Widget headContainer(BuildContext context) {
     Widget head = Container();
@@ -72,6 +75,16 @@ class SideMenu extends StatelessWidget {
                 color: Colors.red,
                 size: 8,
               ),
+              if (isWebVPN)
+                Text(
+                  isWebVPNTrue,
+                  textScaleFactor: 0.7,
+                )
+              else
+                Text(
+                  isWebVPNFalse,
+                  textScaleFactor: 0.7,
+                ),
             ],
           )
         ],

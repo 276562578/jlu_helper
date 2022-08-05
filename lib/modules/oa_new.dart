@@ -3,12 +3,15 @@ import 'package:jlu_helper/constants.dart';
 import 'package:jlu_helper/responsive.dart';
 import 'package:http/http.dart';
 import 'package:html/parser.dart' show parse;
+import 'package:jlu_helper/global.dart';
 
 class OANews extends StatelessWidget {
   final GlobalKey<ScaffoldState> oa_new_key = GlobalKey<ScaffoldState>();
 
   Future<List<ListTile>> getOANews() async {
-    final response = await get(Uri.parse(oa_news_url));
+    String request_url = oa_news_url;
+    if (Global.isWebVPN) request_url = oa_news_vpn_url;
+    final response = await get(Uri.parse(request_url));
     var document = parse(response.body);
     return document.getElementsByClassName("li rel").map((element) {
       String title = element.getElementsByClassName("font14")[0].text;

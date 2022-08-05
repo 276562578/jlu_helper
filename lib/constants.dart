@@ -1,1 +1,2 @@
 String oa_news_url = "https://oa.jlu.edu.cn/defaultroot/PortalInformation!jldxList.action?channelId=179577";
+String oa_news_vpn_url = "https://webvpn.jlu.edu.cn/https/77726476706e69737468656265737421fff60f962b2526557a1dc7af96/defaultroot/PortalInformation!jldxList.action?channelId=179577";
