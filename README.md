@@ -8,15 +8,9 @@
 
 ## Getting Started
 
-### Windows
+当前版本十分不完善，仅作为展示使用
 
-### Mac
-
-### Linux
-
-### IOS
-
-### Android
+[下载页面](https://github.com/276562578/jlu_helper/releases)
 
 ## 功能
 
